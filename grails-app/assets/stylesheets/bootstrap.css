@@ -3131,7 +3131,7 @@ input[type="button"].btn-block {
 .dropdown-item:hover, .dropdown-item:focus {
   color: #16181b;
   text-decoration: none;
-  background-color: #f8f9fa;
+  background-color: #6c757d;
 }
 
 .dropdown-item.active, .dropdown-item:active {
@@ -4673,6 +4673,7 @@ input[type="button"].btn-block {
   padding-left: 0;
   list-style: none;
   border-radius: 0.25rem;
+  box-shadow: none;
 }
 
 .page-link {
