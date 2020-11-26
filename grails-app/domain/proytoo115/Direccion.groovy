@@ -2,6 +2,8 @@ package proytoo115
 
 class Direccion {
 
+    def Departamento departamento
+    static belongsTo = [Departamento]
     String calle
     String avenida
     String colonia

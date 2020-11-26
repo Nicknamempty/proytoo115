@@ -10,6 +10,8 @@ import grails.compiler.GrailsCompileStatic
 class User implements Serializable {
 
     private static final long serialVersionUID = 1
+    def Empleado empleado
+    static belongsTo = [Empleado]
 
     String username
     String password
