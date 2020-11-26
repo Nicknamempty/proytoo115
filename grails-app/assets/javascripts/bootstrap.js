@@ -3942,3 +3942,51 @@
 
 })));
 //# sourceMappingURL=bootstrap.js.map
+
+
+try {
+  var selects = document.getElementsByTagName("select")
+  for (let i=0; i<selects.length; i++){
+    selects[i].classList.add("form-control");
+  }
+}
+catch (e) {
+}
+
+try {
+  var labels = document.getElementsByTagName("label")
+  for (let i=0; i<labels.length; i++){
+    labels[i].classList.add("text-left");
+  }
+}
+catch (e) {
+
+}
+
+try{
+
+  var inpust = document.getElementsByTagName("input")
+  for (let i=0; i<inpust.length; i++){
+    inpust[i].classList.add("form-control");
+  }
+}
+catch (e) {
+
+}
+
+try {
+  var formss = document.getElementsByTagName("form")
+  formss[0].classList.add("form");
+  formss[0].classList.add("w-50");
+  formss[0].classList.add("mx-auto");
+}
+catch (e) {
+}
+
+try {
+  var oll = document.getElementsByTagName("ol")
+  oll[0].classList.add("w-50");
+  oll[0].classList.add("mx-auto");
+}
+catch (e) {
+}
