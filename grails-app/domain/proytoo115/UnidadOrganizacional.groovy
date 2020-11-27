@@ -4,12 +4,12 @@ class UnidadOrganizacional {
 
     int nivel
     String nombreUnidad
-    static belongsTo = [ subUnidadOrganizacional: UnidadOrganizacional ]
+    static belongsTo = [ unidadOrganizacionalSuperior: UnidadOrganizacional ]
     static mappedBy = [nivel: "none", nombreUnidad: "none"]
     static constraints = {
         nivel min: 0
         nombreUnidad size: 3.. 100, unique:true
-        subUnidadOrganizacional nullable: true
+        unidadOrganizacionalSuperior nullable: true
     }
     static mapping = {
         version false
