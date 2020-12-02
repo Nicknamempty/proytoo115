@@ -31,7 +31,19 @@
             <g:form resource="${this.unidadOrganizacional}" method="PUT">
                 <g:hiddenField name="version" value="${this.unidadOrganizacional?.version}" />
                 <div class="form-group">
-                    <f:all bean="unidadOrganizacional"/>
+                    
+                    <f:field bean="unidadOrganizacional" property="nombreUnidad"/>
+                    <div class="fieldcontain required">
+                        <div class="form-group">
+                            <g:if test="${this.unidadOrganizacional.nivel!=0}">
+                                <label for="unidadOrganizacionalSuperior" class="text-left">Unidad organizacional superior
+                                    <span class="required-indicator">*</span>
+                                </label>
+                                <g:select id="unidadOrganizacionalSuperior" optionKey="id" value="${unidadSuperior.id}"
+                                          name="unidadOrganizacionalSuperior.id" from="${unidadSuperior}" />
+                            </g:if>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <input class="save btn btn-primary w-100" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />

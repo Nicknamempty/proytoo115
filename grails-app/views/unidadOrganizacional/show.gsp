@@ -27,10 +27,15 @@
                     <g:link class="edit btn btn-primary " action="edit" resource="${this.unidadOrganizacional}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                     <input class="delete btn btn-danger w-auto" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </div>
+                <div class="form-group mx-auto">
+                    <h2>Sub Unidades:</h2>
+                    <g:each in="${subUnidad}" var="su" status="i">
+                        ${i+1}. <g:link resource="UnidadOrganizacional" action="show" id="${su.id}"> ${su.nombreUnidad} </g:link><br>
+                    </g:each>
+                </div>
             </g:form>
-            <g:each var="book" in="${us}">
-                <p>Hola</p>
-            </g:each>
+
+
 
 
         </div>

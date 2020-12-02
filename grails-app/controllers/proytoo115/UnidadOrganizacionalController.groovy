@@ -15,7 +15,8 @@ class UnidadOrganizacionalController {
     }
 
     def show(Long id) {
-        respond unidadOrganizacionalService.get(id)
+        def subUnidad = UnidadOrganizacional.findAllByUnidadOrganizacionalSuperior(UnidadOrganizacional.findAllById(id)).toList()
+        respond unidadOrganizacionalService.get(id), model: [subUnidad:subUnidad]
     }
 
     def create() {
@@ -29,6 +30,11 @@ class UnidadOrganizacionalController {
         }
 
         try {
+            if (unidadOrganizacional.unidadOrganizacionalSuperior==null){
+                unidadOrganizacional.nivel=0
+            } else{
+                unidadOrganizacional.nivel=unidadOrganizacional.unidadOrganizacionalSuperior.nivel+1
+            }
             unidadOrganizacionalService.save(unidadOrganizacional)
         } catch (ValidationException e) {
             respond unidadOrganizacional.errors, view:'create'
@@ -45,7 +51,9 @@ class UnidadOrganizacionalController {
     }
 
     def edit(Long id) {
-        respond unidadOrganizacionalService.get(id)
+        def unidadSuperior = UnidadOrganizacional.findAllByNivelLessThan(UnidadOrganizacional.findById(id).nivel).toList()
+        println(unidadSuperior)
+        respond unidadOrganizacionalService.get(id), model: [unidadSuperior:unidadSuperior]
     }
 
     def update(UnidadOrganizacional unidadOrganizacional) {
@@ -55,6 +63,11 @@ class UnidadOrganizacionalController {
         }
 
         try {
+            if (unidadOrganizacional.unidadOrganizacionalSuperior==null){
+                unidadOrganizacional.nivel=0
+            } else{
+                unidadOrganizacional.nivel=unidadOrganizacional.unidadOrganizacionalSuperior.nivel+1
+            }
             unidadOrganizacionalService.save(unidadOrganizacional)
         } catch (ValidationException e) {
             respond unidadOrganizacional.errors, view:'edit'
