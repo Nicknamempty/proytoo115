@@ -36,11 +36,20 @@
                     <div class="fieldcontain required">
                         <div class="form-group">
                             <g:if test="${this.unidadOrganizacional.nivel!=0}">
+
                                 <label for="unidadOrganizacionalSuperior" class="text-left">Unidad organizacional superior
                                     <span class="required-indicator">*</span>
                                 </label>
-                                <g:select id="unidadOrganizacionalSuperior" optionKey="id" value="${unidadSuperior.id}"
-                                          name="unidadOrganizacionalSuperior.id" from="${unidadSuperior}" />
+                                <select id="unidadOrganizacionalSuperior" name="unidadOrganizacionalSuperior.id" class="form-control">
+                                    <g:each var="uo" in="${unidadSuperior}">
+                                        <option value="${uo.id}">${uo}</option>
+                                    </g:each>
+                                </select>
+
+
+
+
+
                             </g:if>
                         </div>
                     </div>

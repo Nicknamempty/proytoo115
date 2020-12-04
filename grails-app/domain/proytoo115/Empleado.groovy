@@ -1,8 +1,8 @@
 package proytoo115
 
 class Empleado {
-    static belongsTo = [Direccion]
     def Direccion direccion
+    static belongsTo = [Direccion]
     String nombre
     String apellido
     String dui
@@ -22,5 +22,10 @@ class Empleado {
         nup size: 3..100
         genero size: 1..200
         estadoCivil size: 5..200
+        direccion nullable: false
+    }
+    @Override
+    String toString() {
+        nombre + " " + apellido
     }
 }
