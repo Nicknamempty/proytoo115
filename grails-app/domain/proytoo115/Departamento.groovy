@@ -1,13 +1,14 @@
 package proytoo115
 
 class Departamento {
-
-    static hasMany = [municipio: Municipio]
-    String nombreD
-
+    String nombre
 
     static constraints = {
-        nombreD  unique: true,size:3..100
-        municipio nulleable: true
+        nombre unique: true, size: 3..100
+    }
+
+    @Override
+    String toString() {
+        nombre
     }
 }

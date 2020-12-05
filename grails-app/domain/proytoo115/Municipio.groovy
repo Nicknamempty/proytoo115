@@ -1,16 +1,16 @@
 package proytoo115
 
 class Municipio {
-
-    static belongsTo = [departamento : Departamento]
-    String nombreM
-
-
-
+    String nombre
+    Departamento departamento
 
     static constraints = {
-        nombreM unique:true, size: 3..100
-        departamento nullable: true
+        nombre unique: true, size: 3..100
+        departamento nullable: false
+    }
 
+    @Override
+    String toString() {
+        nombre
     }
 }
