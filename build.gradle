@@ -41,6 +41,10 @@ dependencies {
     compile 'org.grails.plugins:mail:3.0.0'
     compile 'org.grails.plugins:spring-security-core:4.0.0.RC2'
     compile 'org.grails.plugins:spring-security-ui:4.0.0.M1'
+    compile files('lib/authy-java.jar')
+    compile 'com.twilio.sdk:twilio:7.11.0'
+    compile 'org.grails.plugins:grails-spring-websocket:2.3.0'
+    //aqui termina
     compile "org.springframework.boot:spring-boot-starter-actuator"
     compile "org.springframework.boot:spring-boot-starter-tomcat"
     compile "org.grails:grails-web-boot"
@@ -66,6 +70,7 @@ dependencies {
     runtime "com.h2database:h2"
     runtime "org.apache.tomcat:tomcat-jdbc"
     runtime "javax.xml.bind:jaxb-api:2.3.1"
+
     testCompile "io.micronaut:micronaut-inject-groovy"
     testCompile "org.grails:grails-gorm-testing-support"
     testCompile "org.mockito:mockito-core"

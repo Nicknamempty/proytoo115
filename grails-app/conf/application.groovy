@@ -52,3 +52,7 @@ grails.plugin.springsecurity.ui.forgotPassword.forgotPasswordExtraValidation = [
 	[labelDomain: 'myQuestion4', prop:'myAnswer4'],
 ]
 
+authy.accountSID = "ACd3acca9dfd777d98a45b8b9c2612103c"
+authy.authToken = "ffc707501dc6ab013aa7bfdcf41a3d77"
+authy.fromPhoneNumber = "+15104789443"
+authy.apiKey = "WjcbriE7S1ifY9E4p6Evo0JXR32epC47"
