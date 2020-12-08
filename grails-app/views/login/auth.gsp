@@ -18,23 +18,23 @@
 			  <g:img dir="images" file="across.jpg" width="250" height="150" class="mx-auto d-block"/>
 			  <p></p>
 				    <div class="form-group">
-						<input type="text" name="${securityConfig.apf.usernameParameter}" id="username" class="form-control" placeholder="Usuario" size="20" required/>
+						<input type="text" name="${securityConfig.apf.usernameParameter}" id="username" class="form-input" placeholder="Usuario" size="20" required/>
 					</div>
 
 					<div class="form-group">
-					     <input type="password" name="${securityConfig.apf.passwordParameter}" id="password" class="form-control" placeholder="Contraseña" size="20" required />
+					     <input type="password" name="${securityConfig.apf.passwordParameter}" id="password" class="form-input" placeholder="Contraseña" size="20" required />
 					</div>
 					<div class="form-check">	
 							<input type="checkbox" class="form-check-input" name="${securityConfig.rememberMe.parameter}" id="remember_me" checked="checked" />
 							<label for='remember_me' class="form-check-label">Mantener la sesión iniciada</label> 
 					</div>	
 					<p></p>
-					<button id="loginButton" elementId="loginButton" class="button" type="submit" messageCode="spring.security.ui.login.login">Iniciar Sesion</button>
+					<button id="loginButton" elementId="loginButton" class="button" type="submit" messageCode="spring.security.ui.login.login">Iniciar Sesión</button>
 					<!--<s2ui:submitButton elementId='loginButton' class="submit" type="submit" messageCode='spring.security.ui.login.login'/>-->
 					<p></p>
 					<div class="text-center form-group">	
 					<span class="forgot-link" >
-						<g:link controller='register' action='forgotPassword'>¿Olvidaste tu contraseña?</g:link>
+						<p><g:link controller='register' action='forgotPassword'>¿Olvidaste tu contraseña?</g:link></p>
 					</span>
 					<p>¿No tienes una cuenta? <g:link controller='register' elementId='register'>Registrate ahora</g:link></p>
 				  </div>		
