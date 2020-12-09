@@ -29,6 +29,7 @@ class User implements Serializable {
     static constraints = {
         password nullable: false, blank: false, password: true
         username nullable: false, blank: false, unique: true
+        email    nullable: false, blank: false, unique: true
         countryCode nullable: true
         phoneNumber nullable: true
         authyUserId nullable: true

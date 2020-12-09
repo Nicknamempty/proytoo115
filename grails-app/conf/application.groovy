@@ -4,6 +4,7 @@
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'proytoo115.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'proytoo115.UserRole'
 grails.plugin.springsecurity.authority.className = 'proytoo115.Role'
+grails.plugin.springsecurity.password.algorithm = 'SHA-512'
 grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 		[pattern: '/h2-console/**',  access: ['ROLE_ADMIN']],

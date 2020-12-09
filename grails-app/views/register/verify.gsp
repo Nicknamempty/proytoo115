@@ -1,10 +1,9 @@
 <%--
   Created by IntelliJ IDEA.
   User: Fernando
-  Date: 06/12/2020
-  Time: 09:41 a. m.
+  Date: 08/12/2020
+  Time: 01:27 p. m.
 --%>
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -50,26 +49,26 @@
     Account verification for security. Please enter the security code (check your phone).
 </p>
 
-<g:render template="/template/flashMessage" />
+
 
 <g:form controller="register" action="verifyCode" method="post">
     <div class="form-group">
-        <label for="code">Verification code:</label>
+        <label for="code">Verificar código:</label>
         <input type="text" class="form-control" name="code" id="code">
     </div>
-    <button class="btn btn-primary">Verify Token</button>
+    <button class="btn btn-primary">Verificar</button>
 </g:form>
 
 <g:form controller="register" action="resendVerificationCode" method="post" class="btn pull-right">
-    <button class="btn">Resend Security Code Via SMS</button>
+    <button class="btn">Reenviar Mensaje</button>
 </g:form>
 
-<g:form controller="register" action="resendVerificationCodeViaCall" method="post" class="btn pull-right">
+<!--<g:form controller="register" action="resendVerificationCodeViaCall" method="post" class="btn pull-right">
     <button class="btn">Resend Security Code Via Phone Call</button>
 </g:form>
 
 <g:form controller="register" action="oneTouchAuthenticationRequest" method="post" class="btn pull-right">
-    <button class="btn">Request One Touch Authentication</button>
+    <button class="btn">Request One Touch Authentication</button> -->
 </g:form>
 </body>
 </html>

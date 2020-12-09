@@ -13,7 +13,7 @@ class BootStrap {
 
         def testUser
         User.withTransaction { us ->
-            testUser = new User(username: 'jacksparrow', password: 'password1', fullname: 'Jack Sparrow', email: 'fermerinonew@gmail.com',phoneNumber: '72727281',countryCode: '+503',authyUserId: 23).save(flush: true)
+            testUser = new User(username: 'jacksparrow', password: 'password1', fullname: 'Jack Sparrow', email: 'fermerinonew@gmail.com',phoneNumber: '72727281',countryCode: '+503',authyUserId: 320119439).save(flush: true)
         }
 
         UserRole.create testUser, adminRole
