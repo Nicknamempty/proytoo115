@@ -24,6 +24,7 @@
 </g:elseif>
 
 <g:else>
+    <div style="margin:0;  ">
 <h1>Para usar tu cuenta debes autentificarte</h1>
 <h4>Elige una forma de verificarte</h4>
 <a class="btn btn-primary" controller="Register" action="PorCorreo" >Correo Eléctronico</a>
@@ -53,6 +54,6 @@
         </div>
     </div>
 </g:else>
-
+</div>
 </body>
 </html>
