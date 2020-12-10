@@ -16,6 +16,7 @@ class UnidadOrganizacionalController {
 
     def show(Long id) {
         def subUnidad = UnidadOrganizacional.findAllByUnidadOrganizacionalSuperior(UnidadOrganizacional.findAllById(id)).toList()
+        //Obtengo todas las unidades organizacional de un nivel infereior a la actual relacionadas con la que se esta mostrando
         respond unidadOrganizacionalService.get(id), model: [subUnidad:subUnidad]
     }
 
@@ -30,10 +31,11 @@ class UnidadOrganizacionalController {
         }
 
         try {
-            if (unidadOrganizacional.unidadOrganizacionalSuperior==null){
-                unidadOrganizacional.nivel=0
+            if (unidadOrganizacional.unidadOrganizacionalSuperior==null){//valido si no se la seleccionado una UO superior
+                unidadOrganizacional.nivel=0 //se agrega 0 para indicar que es una UO principal
             } else{
                 unidadOrganizacional.nivel=unidadOrganizacional.unidadOrganizacionalSuperior.nivel+1
+                //Sino agrego un nivel + 1 del nivel de la UO seleccionada como superior o padre de la que se esta creando
             }
             unidadOrganizacionalService.save(unidadOrganizacional)
         } catch (ValidationException e) {
@@ -61,10 +63,11 @@ class UnidadOrganizacionalController {
         }
 
         try {
-            if (unidadOrganizacional.unidadOrganizacionalSuperior==null){
-                unidadOrganizacional.nivel=0
+            if (unidadOrganizacional.unidadOrganizacionalSuperior==null){ //valido si no se la seleccionado una UO superior
+                unidadOrganizacional.nivel=0 //se agrega 0 para indicar que es una UO principal
             } else{
                 unidadOrganizacional.nivel=unidadOrganizacional.unidadOrganizacionalSuperior.nivel+1
+                //Sino agrego un nivel + 1 del nivel de la UO seleccionada como superior o padre de la que se esta editando
             }
             unidadOrganizacionalService.save(unidadOrganizacional)
         } catch (ValidationException e) {
