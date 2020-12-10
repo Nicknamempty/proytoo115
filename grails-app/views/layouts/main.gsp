@@ -8,7 +8,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico"/>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <asset:stylesheet src="application.css"/>
 
     <g:layoutHead/>
@@ -23,6 +23,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <sec:ifLoggedIn>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -48,7 +49,7 @@
                         <g:link action="index" controller="empleado">Ver Perfil</g:link>
                     </div>
                     <div class="d-block">
-                        <sec:ifLoggedIn>
+
                             (<g:link controller='logout'>Salir</g:link>)
                         </sec:ifLoggedIn>
                         <sec:ifNotLoggedIn>
@@ -61,22 +62,11 @@
     </div>
 </nav>
 
-<!--<nav class="navbar navbar-expand-lg navbar-dark navbar-static-top" role="navigation">
-    <a class="navbar-brand" href="/#"><asset:image src="grails.svg" alt="Grails Logo"/></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" aria-expanded="false" style="height: 0.8px;" id="navbarContent">
-        <ul class="nav navbar-nav ml-auto">
-            <g:pageProperty name="page.nav"/>
-        </ul>
-    </div>
 
-</nav>-->
+
 
 <g:layoutBody/>
-
 <footer class="footer row" role="contentinfo">
     <div class="mx-auto">
         TOO115 - GP11 - SISTEMA DE SEGURIDAD

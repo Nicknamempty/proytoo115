@@ -14,6 +14,7 @@
     <title>Elige la forma de verificar tu cuenta</title>
 </head>
 <body>
+
 <g:if test='${params.emailSent}'>
     <br/>
     <g:message code='spring.security.ui.register.sent'/>
@@ -24,34 +25,47 @@
 </g:elseif>
 
 <g:else>
-    <div style="margin:0;  ">
+    <div style="margin-left: 100px;margin-top: 100px;margin-right: 100px;" class="shadow p-3 mb-5 bg-white rounded row d-flex justify-content-center">
+    <div class="col-12 justify-content-center">
 <h1>Para usar tu cuenta debes autentificarte</h1>
 <h4>Elige una forma de verificarte</h4>
-<a class="btn btn-primary" controller="Register" action="PorCorreo" >Correo Eléctronico</a>
+</div>
+
+    <div  class="col-6">
+
+
 <form controller="register" action="PorCorreo">
 <input name="user" value="${params.user}" hidden></input>
 
-    <input name="email" value="${params.email}" disabled hidden></input>
-    <input name="registrationCode" value="${params.registrationCode}" hidden></input>
-    <g:submitButton name="create" class="save btn btn-primary" value="Correo" />
-</form>
-    <p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-           Vía Celular <i class="fas fa-phone"></i>
-        </a>
+    <input name="email" value="${params.email}" hidden></input>
+    <input name="registrationCode" value="${params.registrationCode}" hidden ></input>
+    <p class="d-flex justify-content-center">
 
+
+
+        <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Vía Celular  <i class="fas fa-sms"></i>
+        </button>
+        <g:submitButton name="enviar" class="save btn btn-dark" value="Correo" />
     </p>
+    </form>
+
+
+
+
+
     <div class="collapse" id="collapseExample">
         <div class="card card-body">
             <form controller="Register" action="PorTelefono">
-                <input name="user" value="${params.user}" ></input>
-                <input name="email" value="${params.email}" disabled hidden></input>
+                <input name="user" value="${params.user}"  hidden></input>
+                <input name="email" value="${params.email}"  hidden></input>
                 <input type="number" name="codPais" placeholder="código de país (+503)"  ></input>
                 <input type="number" name="numero"  placeholder="72727281" ></input>
-                <g:submitButton name="create" class="save btn btn-primary" value="Enviar" />
+                <g:submitButton name="enviar" class="save btn btn-outline-dark" value="Enviar" />
             </form>
 
         </div>
+    </div>
     </div>
 </g:else>
 </div>

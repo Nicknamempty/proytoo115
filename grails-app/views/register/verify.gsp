@@ -45,11 +45,35 @@
 </head>
 
 <body>
-<p>
-    Account verification for security. Please enter the security code (check your phone).
-</p>
 
+<g:if test='${NoPhone}'>
+    <br/>
+    <div class="alert alert-error" style="display: block">${flash.error}</div>
 
+    <div class="card card-body">
+        <form controller="Register" action="PorTelefono">
+            <input name="user" value="${params.user}"  hidden></input>
+            <input name="email" value="${params.email}"  hidden></input>
+            <input type="number" name="codPais" placeholder="código de país (+503)"  ></input>
+            <input type="number" name="numero"  placeholder="72727281" ></input>
+            <g:submitButton name="enviar" class="save btn btn-outline-dark" value="Enviar" />
+        </form>
+
+    </div>
+</g:if>
+<g:else>
+    <g:if test="${flash.error}">
+        <div class="alert alert-error" style="display: block">${flash.error}</div>
+    </g:if>
+    <g:if test="${flash.message}">
+        <div class="" style="display: block">${flash.message}</div>
+    </g:if>
+<div style="padding-bottom: 40em; margin: 250px;" class="shadow p-3 mb-5 bg-white rounded d-flex justify-content-center " >
+   <div>
+       <h1>
+           Verifica tu cuenta
+       </h1>
+   </div>
 
 <g:form controller="register" action="verifyCode" method="post">
     <div class="form-group">
@@ -57,18 +81,13 @@
         <input type="text" class="form-control" name="code" id="code">
     </div>
     <button class="btn btn-primary">Verificar</button>
+    <g:form controller="register" action="resendVerificationCode" method="post" class="btn pull-right">
+        <button class="btn">Reenviar Mensaje</button>
+    </g:form>
 </g:form>
 
-<g:form controller="register" action="resendVerificationCode" method="post" class="btn pull-right">
-    <button class="btn">Reenviar Mensaje</button>
-</g:form>
 
-<!--<g:form controller="register" action="resendVerificationCodeViaCall" method="post" class="btn pull-right">
-    <button class="btn">Resend Security Code Via Phone Call</button>
-</g:form>
-
-<g:form controller="register" action="oneTouchAuthenticationRequest" method="post" class="btn pull-right">
-    <button class="btn">Request One Touch Authentication</button> -->
-</g:form>
+</div>
+</g:else>
 </body>
 </html>
