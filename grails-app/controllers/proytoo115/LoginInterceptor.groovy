@@ -7,7 +7,7 @@ class LoginInterceptor {
 
     public LoginInterceptor(){
         match controller:"login", action:"authfail"
-
+        //Intercepta entre en la accion en error en inicio de sesion del controlador login
     }
 
     boolean before() {
@@ -15,7 +15,6 @@ class LoginInterceptor {
     }
 
     boolean after() {
-        println("Hola mundo")
         true
     }
 

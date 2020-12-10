@@ -20,9 +20,10 @@ class EmpleadoController {
     }
 
     def create() {
-        def departamentos = Departamento.getAll()
-        def municipios = Municipio.getAll()
+        def departamentos = Departamento.getAll() //Obetener todos los departamentos para el select box
+        def municipios = Municipio.getAll() // obtener todos los municipios para el select box
         respond new Empleado(params) , model: [departamentos:departamentos, municipios:municipios as JSON]
+        //Mando a la vistas todos los departamentos y municipios. Municipio en formato JSON
     }
 
     def save(Empleado empleado) {
@@ -50,9 +51,10 @@ class EmpleadoController {
     }
 
     def edit(Long id) {
-        def departamentos = Departamento.getAll()
-        def municipios = Municipio.getAll()
+        def departamentos = Departamento.getAll() //Obetener todos los departamentos para el select box
+        def municipios = Municipio.getAll() // obtener todos los municipios para el select box
         respond empleadoService.get(id), model: [departamentos:departamentos, municipios:municipios as JSON]
+//        //Mando a la vistas todos los departamentos y municipios. Municipio en formato JSON
     }
 
     def update(Empleado empleado) {

@@ -52,3 +52,12 @@ grails.plugin.springsecurity.ui.forgotPassword.forgotPasswordExtraValidation = [
 	[labelDomain: 'myQuestion4', prop:'myAnswer4'],
 ]
 
+grails.plugin.springsecurity.useSecurityEventListener = true
+grails.plugin.springsecurity.onInteractiveAuthenticationSuccessEvent = { e, appCtx ->
+	// Handle successful login
+}
+grails.plugin.springsecurity.onAbstractAuthenticationFailureEvent = { e, appCtx ->
+	// Handle failed login
+	// example of how to obtain the session if you need it
+
+}
