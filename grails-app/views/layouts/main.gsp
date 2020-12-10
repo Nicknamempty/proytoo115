@@ -40,6 +40,9 @@
             <li class="nav-item px-2 my-auto">
                 <g:link controller="unidadOrganizacional">Unidad Organizacional</g:link>
             </li>
+            <li class="nav-item px-2 my-auto">
+                <a href="/requestmap/create">Gestión</a>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <sec:username />
