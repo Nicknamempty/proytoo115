@@ -1,4 +1,4 @@
-
+import org.springframework.security.authentication.*;
 
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'proytoo115.User'
@@ -61,3 +61,9 @@ grails.plugin.springsecurity.onAbstractAuthenticationFailureEvent = { e, appCtx 
 	// example of how to obtain the session if you need it
 
 }
+grails.plugin.springsecurity.failureHandler.exceptionMappings = [
+		[exception: LockedException.name,             url: '/user/resetPassword'],
+		[exception: DisabledException.name,           url: '/user/resetPassword'],
+		[exception: AccountExpiredException.name,     url: '/user/resetPassword'],
+		[exception: CredentialsExpiredException.name, url: '/user/resetPassword']
+]
