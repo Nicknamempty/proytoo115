@@ -1,4 +1,4 @@
-
+import org.springframework.security.authentication.*;
 
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'proytoo115.User'
@@ -52,3 +52,9 @@ grails.plugin.springsecurity.ui.forgotPassword.forgotPasswordExtraValidation = [
 	[labelDomain: 'myQuestion4', prop:'myAnswer4'],
 ]
 
+grails.plugin.springsecurity.failureHandler.exceptionMappings = [
+		[exception: LockedException.name,             url: '/user/resetPassword'],
+		[exception: DisabledException.name,           url: '/user/resetPassword'],
+		[exception: AccountExpiredException.name,     url: '/user/resetPassword'],
+		[exception: CredentialsExpiredException.name, url: '/user/resetPassword']
+]
