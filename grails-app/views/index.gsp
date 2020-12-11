@@ -52,23 +52,23 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item">
-                <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&amp;bg=777&amp;fg=555&amp;text=First slide" alt="First slide [800x400]" src="assets/images/signup-bg.jpg" data-holder-rendered="true">
+                <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&amp;bg=777&amp;fg=555&amp;text=First slide" alt="First slide [800x400]" width="800px" height="585px" src="${resource(dir: 'images', file: 'signup-bg.jpg')}" data-holder-rendered="true">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>TOO115</h5>
                     <p>Sistema seguro y confiable.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&amp;bg=666&amp;fg=444&amp;text=Second slide" alt="Second slide [800x400]" src="assets/images/c86333ec-7149-4567-8064-194a1f627a0c.jpg" data-holder-rendered="true">
+                <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&amp;bg=666&amp;fg=444&amp;text=Second slide" alt="Second slide [800x400]" width="800px" height="585px"  src="${resource(dir: 'images', file: 'c86333ec-7149-4567-8064-194a1f627a0c.jpg')}" data-holder-rendered="true">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Control</h5>
                     <p>Mantenga sus datos seguros</p>
                 </div>
             </div>
             <div class="carousel-item active">
-                <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&amp;bg=555&amp;fg=333&amp;text=Third slide" alt="Third slide [800x400]" src="assets/images/70b14b8c-7de1-4fb8-8e26-3396b81450f4.jpg" data-holder-rendered="true">
+                <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&amp;bg=555&amp;fg=333&amp;text=Third slide" alt="Third slide [800x400]" width="800px" height="585px"  src="${resource(dir: 'images', file: '70b14b8c-7de1-4fb8-8e26-3396b81450f4.jpg')}" data-holder-rendered="true">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>COnfianza</h5>
+                    <h5>Confianza</h5>
                     <p>Complemente su sistema con seguridad.</p>
                 </div>
             </div>

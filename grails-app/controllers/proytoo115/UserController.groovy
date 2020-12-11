@@ -13,7 +13,7 @@ class UserController extends grails.plugin.springsecurity.ui.UserController {
 
         if (!password || !password_new || !password_new_2 || password_new != password_new_2) {
             flash.message = 'Please enter your current password and a valid new password'
-            render view: 'resetPassword', model: [username: session['SPRING_SECURITY_LAST_USERNAME']]
+            render view: 'resetPassword', username2
             return
         }
 
@@ -22,9 +22,14 @@ class UserController extends grails.plugin.springsecurity.ui.UserController {
         user.password = password_new
         user.passwordExpired = false
         user.enabled = true
-        user.accountLocked = true
+        user.accountLocked = false
         user.accountExpired = false
         user.save() // if you have password constraints check them here
+
+        Historial_Contrasena historial_contrasena = new Historial_Contrasena()
+        historial_contrasena.usuario = username2
+        historial_contrasena.contrasena = password_new
+        historial_contrasena.save()
 
         redirect controller: 'login', action: 'auth'
     }
