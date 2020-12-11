@@ -94,17 +94,11 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
         if (!params.code) {
             flash.error = "Por favor, ingrese el código"
         }
-        /*if(springSecurityService.principal.phoneNumber == null)
-        {
-            flash.error = "No tiene un teléono asociado, por favor ingrese uno"
-            [NoPhone: true]
-            redirect(action: 'verify', params: [ Nophone: true,user:springSecurityService.principal.username,email:springSecurityService.principal.email])
 
-        }*/
 
         if (registerService.verifyCode(springSecurityService.principal.username, params.code)) {
             session.verified = Boolean.TRUE
-            redirect view: '/'
+            redirect(uri:'/')
         } else {
             flash.error = "Cödigo Incorrecto!"
             redirect action: 'verify'

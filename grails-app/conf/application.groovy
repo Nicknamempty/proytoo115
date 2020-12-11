@@ -8,14 +8,10 @@ grails.plugin.springsecurity.requestMap.className = 'proytoo115.Requestmap'
 grails.plugin.springsecurity.securityConfigType = "Requestmap"
 grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-		[pattern: '/h2-console/**',  access: ['ROLE_ADMIN']],
-		[pattern: '/user/**',        access: ['ROLE_ADMIN']],
-		[pattern: '/role/**',        access: ['ROLE_ADMIN']],
-		[pattern: '/securityInfo/**',access: ['ROLE_ADMIN']],
-		[pattern: '/registrationCode/**',access: ['ROLE_ADMIN']],
-		[pattern: '/plugins/**',     access: ['ROLE_USER']],
+
 		[pattern: '/register/**',    access: ['permitAll']],
-		[pattern: '/',               access: ['permitAll']],
+		[pattern: '/register/**',    access: ['permitAll']],
+		[pattern: '/login/**',         access: ['permitAll']],
 		[pattern: '/error',          access: ['permitAll']],
 		[pattern: '/index',          access: ['permitAll']],
 		[pattern: '/index.gsp',      access: ['permitAll']],
@@ -25,7 +21,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 		[pattern: '/**/css/**',      access: ['permitAll']],
 		[pattern: '/**/images/**',   access: ['permitAll']],
 		[pattern: '/**/favicon.ico', access: ['permitAll']],
-		[pattern: '/**',    access: ['permitAll']]
+
 ]
 grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/assets/**',      filters: 'none'],
