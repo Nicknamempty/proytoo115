@@ -53,7 +53,7 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
 
         String registrationCode = params.registrationCode
         RegistrationCode registrationCode1 = RegistrationCode.findById(registrationCode)
-            if( requireEmailValidation  ) {
+            if( requireEmailValidation ) {
                 sendVerifyRegistrationMail registrationCode1, user2, email
                 [emailSent: true, registerCommand: registerCommand1]
                 redirect(action: "SoyYo",params: [ emailSent: true])
@@ -104,7 +104,7 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
 
         if (registerService.verifyCode(springSecurityService.principal.username, params.code)) {
             session.verified = Boolean.TRUE
-            redirect view: 'index'
+            redirect view: '/'
         } else {
             flash.error = "Cödigo Incorrecto!"
             redirect action: 'verify'

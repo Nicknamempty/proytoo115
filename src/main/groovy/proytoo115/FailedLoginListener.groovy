@@ -15,7 +15,7 @@ import grails.plugin.springsecurity.web.SecurityRequestHolder
 
 import groovy.transform.CompileStatic
 
-import javax.jws.soap.SOAPBinding
+//import javax.jws.soap.SOAPBinding
 
 @CompileStatic
 class FailedLoginListener implements ApplicationListener<ApplicationEvent>{

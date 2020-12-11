@@ -60,7 +60,7 @@
                 <input name="user" value="${params.user}"  hidden></input>
                 <input name="email" value="${params.email}"  hidden></input>
                 <input type="number" name="codPais" placeholder="código de país (+503)"  ></input>
-                <input type="number" name="numero"  placeholder="72727281" ></input>
+                <input type="number" name="numero"  placeholder="Telefono" ></input>
                 <g:submitButton name="enviar" class="save btn btn-outline-dark" value="Enviar" />
             </form>
 
