@@ -49,7 +49,7 @@
                 </a>
                 <div class="dropdown-menu bg-dark " aria-labelledby="navbarDropdown">
                     <div class="d-block">
-                        <g:link action="index" controller="empleado">Ver Perfil</g:link>
+                        <g:link action="Personal" controller="empleado">Ver Perfil</g:link>
                     </div>
                     <div class="d-block">
 

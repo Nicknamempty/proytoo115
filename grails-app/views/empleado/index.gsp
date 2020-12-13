@@ -8,6 +8,19 @@
         <asset:javascript src="form-style.js"/>
     </head>
     <body>
+
+
+
+            <g:link  class="dropdown-item" controller="empleado" action="index" params="[genero:'hombre']">
+                Hombres
+            </g:link>
+            <g:link   controller="empleado" action="index" params="[genero:'mujer']">
+                Mujeres
+            </g:link>
+
+
+
+
         <a href="#list-empleado" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <!--<ul>

@@ -6,10 +6,42 @@ import grails.plugin.springsecurity.ui.RegisterCommand
 
 
 import grails.plugin.springsecurity.ui.RegistrationCode
+import org.apache.commons.lang3.RandomStringUtils
 
 class RegisterController extends grails.plugin.springsecurity.ui.RegisterController {
     def springSecurityService
     def registerService
+
+
+    def Registro()
+    {String xd = params.user
+        Empleado empleado = Empleado.findByDui(xd)
+        String charset = (('A'..'Z') + ('0'..'9')).join()
+        Integer length = 9
+        String randomString = RandomStringUtils.random(length, charset.toCharArray())
+        RegisterCommand registerCommand1 = new RegisterCommand()
+        registerCommand1.username = empleado.dui
+        registerCommand1.email = empleado.email
+        registerCommand1.password = randomString
+        registerCommand1.password2 = randomString
+        def user = uiRegistrationCodeStrategy.createUser(registerCommand1)
+        RegistrationCode registrationCode = uiRegistrationCodeStrategy.register(user, registerCommand1.password)
+        User userx = User.findByUsername(empleado.dui)
+
+        if (registerService.saveUser(empleado.email,empleado.phoneNumber,empleado.countryCode,empleado.dui)) {
+            redirect controller: 'login'
+            sendMail {
+                to empleado.email
+                subject "Nuevas Credenciales Across Company"
+                text "A continuación obtendrá las credenciales con las que podrá ingresar a su cuenta: ${userx.username} clave: ${randomString}"
+            }
+        } else {
+            flash.error = "¡Oh, oh, hubo algún problema para enviar su código, intente de nuevo !"
+            redirect action: 'SoyYo'
+        }
+
+    }
+
 
     def register(RegisterCommand registerCommand)
     {

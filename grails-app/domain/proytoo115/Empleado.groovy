@@ -11,6 +11,10 @@ class Empleado {
     String nup
     String genero
     String estadoCivil
+    String countryCode
+    String phoneNumber
+    String email
+
 
 
     static constraints = {
@@ -23,6 +27,8 @@ class Empleado {
         genero size: 1..200
         estadoCivil size: 5..200
         direccion nullable: false
+        countryCode nullable: true
+        phoneNumber nullable: true
     }
     @Override
     String toString() {

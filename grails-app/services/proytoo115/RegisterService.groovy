@@ -35,17 +35,16 @@ class RegisterService {
             new UserRole(User: user, Role: role).save()
 */
             User user = User.findByUsername(username)
-            user.phoneNumber = phoneNumber
-            user.countryCode = countryCode
+          //  user.phoneNumber = phoneNumber
+          //  user.countryCode = countryCode
             user.authyUserId = authyUserId
             user.accountLocked = false
-            String xdx = user.authyUserId.toString()
-            user.save(flus: true)
-            println "Estes el authy del usuario"
-            println(xdx)
-            User user2 = User.findByUsername(username)
-             xdx = user2.authyUserId.toString()
-            println(xdx)
+         //   String xdx = user.authyUserId.toString()
+            user.save(flush: true)
+         //   println "Estes el authy del usuario"
+         //   println(xdx)
+         //   User user2 = User.findByUsername(username)
+         //   println(xdx)
 
 
             return Boolean.TRUE

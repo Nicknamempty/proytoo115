@@ -7,16 +7,31 @@ import grails.converters.JSON
 class EmpleadoController {
 
     EmpleadoService empleadoService
-
+    def springSecurityService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+        String genero = params.genero
+
+        if(genero!=null)
+        {
+            List<Empleado> empleadoList = Empleado.findAllByGenero(genero)
+            respond empleadoList, model:[empleadoCount: empleadoService.count()]
+            return
+        }
         respond empleadoService.list(params), model:[empleadoCount: empleadoService.count()]
     }
 
     def show(Long id) {
+
         respond empleadoService.get(id)
+    }
+    def Personal() {
+
+        User userx = User.findByUsername(springSecurityService.principal.username)
+        Empleado empleado  = Empleado.findByEmail(userx.email)
+        respond empleadoService.get(empleado.id)
     }
 
     def create() {
@@ -44,7 +59,7 @@ class EmpleadoController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'empleado.label', default: 'Empleado'), empleado.id])
-                redirect empleado
+                redirect(controller: 'register',action: "Registro",params: [user: empleado.dui])
             }
             '*' { respond empleado, [status: CREATED] }
         }

@@ -22,7 +22,7 @@
                     </g:eachError>
                 </ul>
               </g:hasErrors>   
-              <s2ui:formContainer type='save'beanType='perfil'>
+              <s2ui:formContainer type='save' beanType='perfil'>
                 <s2ui:form useToken="true"> 
                  <p>Estas preguntas nos ayudarán a verificar tu identidad si olvidas tu contraseña</p>
                    <s2ui:selectRow name='user.id' class='form-control' from='${users}' labelCodeDefault='Usuario:' optionValue='${lookupProp}' />  
@@ -38,7 +38,7 @@
                         <option>¿Cuál es el nombre de su primer amor?</option>
                        </select>
                			    <!--<s2ui:textFieldRow name='myQuestion1' size='70' class="form-control" labelCodeDefault='Pregunta 1'/>-->                       
-                       <s2ui:passwordFieldRow name='myAnswer1'  class="form-control" required placeholder='Respuesta'/>      
+                       <s2ui:textFieldRow name='myAnswer1'  class="form-control" required placeholder='Respuesta'/>
                      </div>
 
                     <div class="form-group">  
@@ -53,7 +53,7 @@
                             <option>¿Cuál es el nombre de su primer amor?</option>
                         </select>
             			      <!--<s2ui:textFieldRow name='myQuestion2' size='70' class="form-control" labelCodeDefault='Pregunta 2'/>-->
-            		        <s2ui:passwordFieldRow name='myAnswer2' size='40' type="password" class="form-control" required placeholder='Respuesta'/>
+            		        <s2ui:textFieldRow name='myAnswer2' size='40' type="password" class="form-control" required placeholder='Respuesta'/>
                      </div>
 
                      <div class="form-group">  
@@ -67,7 +67,7 @@
                             <option>¿Cómo se llama tu tio favorito?</option>
                             <option>¿Cuál es el nombre de su primer amor?</option>
                         </select>
-                        <s2ui:passwordFieldRow name='myAnswer3' class="form-control" required placeholder='Respuesta'/> 
+                        <s2ui:textFieldRow name='myAnswer3' class="form-control" required placeholder='Respuesta'/>
                       </div>  
 
             			    <div class="form-group">              
@@ -81,7 +81,7 @@
                             <option>¿Cómo se llama tu tio favorito?</option>
                             <option>¿Cuál es el nombre de su primer amor?</option>
                         </select>
-            			      <s2ui:passwordFieldRow name='myAnswer4' class="form-control" required placeholder='Respuesta' />            
+            			      <s2ui:textFieldRow name='myAnswer4' class="form-control" required placeholder='Respuesta' />
                       </div>
                      
                     <div class="row">
