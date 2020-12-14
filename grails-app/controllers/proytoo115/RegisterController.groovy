@@ -46,12 +46,13 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
         userx.newUser=true
 
         if (registerService.saveUser(empleado.email,empleado.phoneNumber,empleado.countryCode,empleado.dui)) {
-            //redirect controller: 'login'
+            //
             sendMail {
                 to empleado.email
                 subject "Nuevas Credenciales Across Company"
                 text "A continuación obtendrá las credenciales con las que podrá ingresar a su cuenta: ${userx.username} clave: ${randomString}"
             }
+            redirect (uri:'/')
         } else {
             flash.error = "¡Oh, oh, hubo algún problema para enviar su código, intente de nuevo !"
            // redirect action: 'SoyYo'

@@ -8,7 +8,7 @@ class BootStrap {
                 '/', '/error', '/index', '/index.gsp', '/**/favicon.ico', '/shutdown',
                 '/assets/**', '/**/js/**', '/**/css/**', '/**/images/**',
                 '/login', '/login.*', '/login/*',
-                '/logout', '/logout.*', '/logout/*','/register/**','/perfil/**']) {
+                '/logout', '/logout.*', '/logout/*','/register/**','/perfil/**','/**/**']) {
             new Requestmap(url: url, configAttribute: 'permitAll').save()
         }
         Departamento dep = new Departamento(nombre: 'San Salvador').save()

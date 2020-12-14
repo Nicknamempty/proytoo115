@@ -4,31 +4,9 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'proytoo115.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'proytoo115.UserRole'
 grails.plugin.springsecurity.authority.className = 'proytoo115.Role'
 grails.plugin.springsecurity.requestMap.className = 'proytoo115.Requestmap'
-//grails.plugin.springsecurity.securityConfigType = "Requestmap"
+grails.plugin.springsecurity.securityConfigType = "Requestmap"
 grails.plugin.springsecurity.logout.postOnly = false
-grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 
-		[pattern: '/register/**',    access: ['permitAll']],
-		[pattern: '/perfil/**',    access: ['permitAll']],
-		[pattern: '/empleado/**',    access: ['permitAll']],
-		[pattern: '/departamento/**',    access: ['permitAll']],
-		[pattern: '/municipio/**',    access: ['permitAll']],
-		[pattern: '/direccion/**',    access: ['permitAll']],
-		[pattern: '/user/**',    access: ['permitAll']],
-		[pattern: '/role/**',    access: ['permitAll']],
-		[pattern: '/register/**',    access: ['permitAll']],
-		[pattern: '/login/**',         access: ['permitAll']],
-		[pattern: '/error',          access: ['permitAll']],
-		[pattern: '/index',          access: ['permitAll']],
-		[pattern: '/index.gsp',      access: ['permitAll']],
-		[pattern: '/shutdown',       access: ['permitAll']],
-		[pattern: '/assets/**',      access: ['permitAll']],
-		[pattern: '/**/js/**',       access: ['permitAll']],
-		[pattern: '/**/css/**',      access: ['permitAll']],
-		[pattern: '/**/images/**',   access: ['permitAll']],
-		[pattern: '/**/favicon.ico', access: ['permitAll']],
-
-]
 grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/assets/**',      filters: 'none'],
 	[pattern: '/**/js/**',       filters: 'none'],

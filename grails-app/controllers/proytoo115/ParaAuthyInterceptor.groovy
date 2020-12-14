@@ -15,6 +15,7 @@ class ParaAuthyInterceptor {
     boolean before() {
         if (!(params.controller in ["register", "stomp"]) && springSecurityService.isLoggedIn() && !session.verified) {
             redirect controller: 'register', action: 'verify'
+            return false
         }
 
         true
