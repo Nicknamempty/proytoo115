@@ -1,17 +1,33 @@
 package proytoo115
 
 import grails.converters.JSON
+import grails.gsp.PageRenderer
 import grails.plugin.springsecurity.ui.CommandObject
+import grails.plugin.springsecurity.ui.ForgotPasswordCommand
 import grails.plugin.springsecurity.ui.RegisterCommand
 
 
 import grails.plugin.springsecurity.ui.RegistrationCode
+import grails.plugin.springsecurity.ui.ResetPasswordCommand
+import grails.plugin.springsecurity.ui.strategy.PropertiesStrategy
 import org.apache.commons.lang3.RandomStringUtils
+import org.springframework.context.MessageSource
 
 class RegisterController extends grails.plugin.springsecurity.ui.RegisterController {
     def springSecurityService
     def registerService
 
+    /** Dependency injection for the 'uiPropertiesStrategy' bean. */
+    PropertiesStrategy uiPropertiesStrategy
+
+    String serverURL
+
+    PageRenderer groovyPageRenderer
+    MessageSource messageSource
+
+    static final String EMAIL_LAYOUT = "/layouts/email"
+    static final String FORGOT_PASSWORD_TEMPLATE = "/register/_forgotPasswordMail"
+    static final String VERIFY_REGISTRATION_TEMPLATE = "/register/_verifyRegistrationMail"
 
     def Registro()
     {String xd = params.user
@@ -27,6 +43,7 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
         def user = uiRegistrationCodeStrategy.createUser(registerCommand1)
         RegistrationCode registrationCode = uiRegistrationCodeStrategy.register(user, registerCommand1.password)
         User userx = User.findByUsername(empleado.dui)
+        userx.newUser=true
 
         if (registerService.saveUser(empleado.email,empleado.phoneNumber,empleado.countryCode,empleado.dui)) {
             redirect controller: 'login'
@@ -69,6 +86,43 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
 
     
 
+    }
+    def forgotPassword(ForgotPasswordCommand forgotPasswordCommand) {
+
+        if (!request.post) {
+            ForgotPasswordCommand fpc = new ForgotPasswordCommand()
+            return [forgotPasswordCommand: fpc]
+        }
+        withForm {
+            if (forgotPasswordCommand.hasErrors()) {
+
+                return [forgotPasswordCommand: forgotPasswordCommand]
+            }
+            def user = findUserByUsername(forgotPasswordCommand.username)
+            if(springSecurityService.isLoggedIn())
+            {
+                User userx = User.findByUsername(forgotPasswordCommand.username)
+                if(userx.newUser)
+                {
+                    redirect uri: processForgotPasswordEmail(forgotPasswordCommand, user)
+                }
+            } else {
+
+
+                    if (forgotPasswordExtraValidation && forgotPasswordExtraValidation.size() > 0 && forgotPasswordExtraValidationDomainClassName) {
+                        redirect uri: generateLink('securityQuestions', [username: forgotPasswordCommand.username])
+                    } else {
+                        if (requireForgotPassEmailValidation) {
+                            processForgotPasswordEmail(forgotPasswordCommand, user)
+                        } else {
+                            redirect uri: processForgotPasswordEmail(forgotPasswordCommand, user)
+                        }
+                    }
+                }
+        }.invalidToken {
+            flash.message = "Invalid Form Submission"
+            redirect(controller: "login", action: "auth")
+        }
     }
    def SoyYo()
     {}
@@ -174,6 +228,85 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
             render contentType: "text/json", text: [status: 'error'] as JSON
         }
     }
+ def processForgotPasswordEmail(forgotPasswordCommand,user){
+        if(springSecurityService.isLoggedIn())
+        {
+            User userx = User.findByUsername(forgotPasswordCommand.username)
+            if(userx.newUser) {
+                return generateLink('resetPassword', [t: uiRegistrationCodeStrategy.sendForgotPasswordMail(forgotPasswordCommand.username)?.token])
+            }
+            }else {
 
+
+            if (requireForgotPassEmailValidation) {
+                String email = uiPropertiesStrategy.getProperty(user, 'email')
+                if (!email) {
+                    forgotPasswordCommand.errors.rejectValue 'username', 'spring.security.ui.forgotPassword.noEmail'
+                    return [forgotPasswordCommand: forgotPasswordCommand]
+                }
+                uiRegistrationCodeStrategy.sendForgotPasswordMail(
+                        forgotPasswordCommand.username, email) { String registrationCodeToken ->
+
+                    String url = generateLink('resetPassword', [t: registrationCodeToken])
+                    String body = forgotPasswordEmailBody
+
+                    if (!body) {
+                        body = renderEmail(
+                                "/register/_forgotPasswordMail",
+                                [
+                                        url     : url,
+                                        username: user.username
+                                ]
+                        )
+                    } else if (body.contains('$')) {
+                        body = evaluate(body, [user: user, url: url])
+                    }
+
+                    body
+                }
+                [emailSent: true, forgotPasswordCommand: forgotPasswordCommand]
+            } else {
+                return generateLink('resetPassword', [t: uiRegistrationCodeStrategy.sendForgotPasswordMail(forgotPasswordCommand.username)?.token])
+            }
+        }
+    }
+
+    def resetPassword(ResetPasswordCommand resetPasswordCommand) {
+
+        String token = params.t
+
+        def registrationCode = token ? RegistrationCode.findByToken(token) : null
+        if (!registrationCode) {
+            flash.error = message(code: 'spring.security.ui.resetPassword.badCode')
+            redirect uri: successHandlerDefaultTargetUrl
+            return
+        }
+
+        if (!request.post) {
+            return [token: token, resetPasswordCommand: new ResetPasswordCommand()]
+        }
+
+        resetPasswordCommand.username = registrationCode.username
+        resetPasswordCommand.validate()
+        if (resetPasswordCommand.hasErrors()) {
+            return [token: token, resetPasswordCommand: resetPasswordCommand]
+        }
+
+        def user = uiRegistrationCodeStrategy.resetPassword(resetPasswordCommand, registrationCode)
+
+        if(springSecurityService.isLoggedIn())
+                {
+                registerService.NuevoUsuario(registrationCode.username)
+                }
+
+        if (user.hasErrors()) {
+            // expected to be handled already by ErrorsStrategy.handleValidationErrors
+        }
+
+        flash.message = message(code: 'spring.security.ui.resetPassword.success')
+
+        redirect uri: registerPostResetUrl ?: successHandlerDefaultTargetUrl
+    }
 
 }
+

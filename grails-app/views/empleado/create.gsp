@@ -41,20 +41,20 @@
                         <f:field property="nit" bean="empleado"/>
                         <f:field property="isss" bean="empleado"/>
                         <f:field property="nup" bean="empleado"/>
+                    <option value="Viudo">Viudo</option>
+                    </select>
+                    <select class="mdb-select md-form" property="genero" bean="empleado">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="no definido">Perfiero no dedicir</option>
+                    </select>
                         <select class="mdb-select md-form" property="estadoCivil" bean="empleado">
                             <option value="" disabled selected>Choose your option</option>
                             <option value="Casado">Casado</option>
                             <option value="Soltero">Soltero</option>
                             <option value="Divorciado">Divorciado</option>
-                        <option value="Viudo">Viudo</option>
-                        </select>
-                        <select class="mdb-select md-form" property="genero" bean="empleado">
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="Mujer">Mujer</option>
-                            <option value="Hombre">Hombre</option>
-                            <option value="None">Perfiero no dedicir</option>
 
-                        </select>
                       <!--  <//f:field property="genero" bean="empleado"/>-->
                       <!--  <//f:field property="estadoCivil" bean="empleado"/>-->
                         <f:field property="phoneNumber" bean="empleado"/>

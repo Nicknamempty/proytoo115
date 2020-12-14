@@ -6,6 +6,7 @@ import grails.validation.ValidationException
 class PerfilController extends grails.plugin.springsecurity.ui.AbstractS2UiDomainController {
 
      PerfilService perfilService
+    def springSecurityService
     
      static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
      static defaultAction = 'index'
@@ -47,22 +48,27 @@ class PerfilController extends grails.plugin.springsecurity.ui.AbstractS2UiDomai
             }
 
             try {
+                User userz = User.findByUsername(springSecurityService.principal.username)
+                perfil.user = userz
                 perfilService.save(perfil)
+
             } catch (ValidationException e) {
                 respond perfil.errors, view:'create', model : ['users': User.list(),'lookupProp':SpringSecurityUtils.securityConfig.userLookup.usernamePropertyName]
                 return
             }
 
-            request.withFormat {
+       /*     request.withFormat {
                 form multipartForm {
                     flashCreated(perfil.id)
-                    redirect action:"index", method:"GET"
+redirect(uri:'/')
+                return
                 }
                 '*' { respond perfil, [status: CREATED] }
             }
         }.invalidToken {
-            doSaveWithInvalidToken()
+            doSaveWithInvalidToken() */
         }
+
     }
     
     def edit(Long id) {

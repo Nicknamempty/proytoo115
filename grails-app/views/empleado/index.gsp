@@ -36,6 +36,22 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
             <g:link class="create btn btn-primary btn-create ml-3 mb-3" action="create">Agregar</g:link>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+            <g:link  class="dropdown-item" controller="empleado" action="index" params="[genero:'hombre']">
+                Hombres
+            </g:link>
+            <g:link   controller="empleado" action="index" params="[genero:'mujer']">
+                Mujeres
+            </g:link>
             <f:table collection="${empleadoList}" />
 
             <div class="pagination">

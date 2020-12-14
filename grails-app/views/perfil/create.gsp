@@ -25,7 +25,10 @@
               <s2ui:formContainer type='save' beanType='perfil'>
                 <s2ui:form useToken="true"> 
                  <p>Estas preguntas nos ayudarán a verificar tu identidad si olvidas tu contraseña</p>
-                   <s2ui:selectRow name='user.id' class='form-control' from='${users}' labelCodeDefault='Usuario:' optionValue='${lookupProp}' />  
+                    <div hidden>
+                        <s2ui:selectRow name='user.id' class='form-control' from='${users}' labelCodeDefault='Usuario:' optionValue='${lookupProp}'/>
+                    </div>
+
                     <div class="form-group">                
                        <select name="myQuestion1" class="form-control" required>
                         <option value="" selected="selected">- Selecciona aquí la pregunta No.1-</option>

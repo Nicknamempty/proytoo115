@@ -14,6 +14,16 @@ class RegisterService {
     UserStrategy uiUserStrategy
     def grailsApplication
 
+
+    def NuevoUsuario(String username)
+    {
+        User mlm = User.findByUsername(username)
+        mlm.newUser = false
+        mlm.save(flush:true)
+    }
+
+
+
     boolean saveUser(String email, String phoneNumber,String countryCode,String username) {
         AuthyApiClient authyClient = new AuthyApiClient(grailsApplication.config.authy.apiKey)
 
