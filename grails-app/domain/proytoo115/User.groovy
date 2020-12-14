@@ -14,8 +14,8 @@ class User implements Serializable {
     String username
     String password
     String email
-    String countryCode
-    String phoneNumber
+   // String countryCode
+   // String phoneNumber
     Integer authyUserId
     boolean enabled = true
     boolean accountExpired
@@ -31,15 +31,13 @@ class User implements Serializable {
         password nullable: false, blank: false, password: true
         username nullable: false, blank: false, unique: true
         email    nullable: false, blank: false, unique: true
-        countryCode nullable: true
-        phoneNumber nullable: true
+        //countryCode nullable: true
+       // phoneNumber nullable: true
         authyUserId nullable: true
     }
 
     static mapping = {
 	    password column: '`password`'
     }
-    public String getFullPhoneNumber() {
-        return countryCode + phoneNumber;
-    }
+
 }

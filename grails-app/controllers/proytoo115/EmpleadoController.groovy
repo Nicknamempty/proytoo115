@@ -8,6 +8,7 @@ class EmpleadoController {
 
     EmpleadoService empleadoService
     def springSecurityService
+    def registerService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -49,6 +50,9 @@ class EmpleadoController {
 
         try {
             empleadoService.save(empleado)
+
+                //redirect controller: 'login'
+
         } catch (ValidationException e) {
             def departamentos = Departamento.getAll()
             def municipios = Municipio.getAll()

@@ -46,7 +46,7 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
         userx.newUser=true
 
         if (registerService.saveUser(empleado.email,empleado.phoneNumber,empleado.countryCode,empleado.dui)) {
-            redirect controller: 'login'
+            //redirect controller: 'login'
             sendMail {
                 to empleado.email
                 subject "Nuevas Credenciales Across Company"
@@ -54,7 +54,7 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
             }
         } else {
             flash.error = "¡Oh, oh, hubo algún problema para enviar su código, intente de nuevo !"
-            redirect action: 'SoyYo'
+           // redirect action: 'SoyYo'
         }
 
     }
@@ -186,7 +186,7 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
             session.verified = Boolean.TRUE
             redirect(uri:'/')
         } else {
-            flash.error = "Cödigo Incorrecto!"
+            flash.error = "Código Incorrecto!"
             redirect action: 'verify'
         }
     }

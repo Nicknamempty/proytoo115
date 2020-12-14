@@ -13,6 +13,7 @@ import proytoo115.co.RegistrationForm
 class RegisterService {
     UserStrategy uiUserStrategy
     def grailsApplication
+    def twilioService
 
 
     def NuevoUsuario(String username)
@@ -74,7 +75,8 @@ class RegisterService {
 
         if (token.isOk()) {
             // Send SMS confirmation
-            // sendMessage(user.getFullPhoneNumber(), "Login successful!");
+           //String hola = twilioService.sendMessage(user.getFullPhoneNumber(), "Login successful!")
+           //  sendMessage(user.getFullPhoneNumber(), "Login successful!");
 
             return Boolean.TRUE
         } else {
